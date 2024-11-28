@@ -39,55 +39,49 @@
 						<table class="table table-bordered">
 							<tbody>
 								<tr>
-									<th style="width: 10px">#</th>
-									<th>Task</th>
-									<th>Progress</th>
-									<th style="width: 40px">Label</th>
+									<th style="width: 10px">ID</th>
+									<th>UserName</th>
+									<th>PassWord</th>
+									<th>Enabled</th>
+									<th>Tên Nhân Viên</th>
+									<th>Phái</th>
+									<th>Ngày Sinh</th>
+									<th>Địa Chỉ</th>
+									<th>Email</th>
+									<th>Số Điện Thoại</th>
+									<th>Ngày Vào Làm</th>
+									<th>Vị Trí</th>
+									<th style="width: 40px">Tùy Chọn</th>
 								</tr>
-								<tr>
-									<td>1.</td>
-									<td>Update software</td>
+
+								<tr th:each="listnhanvien : ${list}">
+									<td th:text="${listnhanvien.id}"></td>
+									<td th:text="${listnhanvien.username}"></td>
+								<td th:text="${listnhanvien.password.substring(0, 10) + '...'}"></td>
 									<td>
-										<div class="progress progress-xs">
-											<div class="progress-bar progress-bar-danger"
-												style="width: 55%"></div>
-										</div>
+										<span 
+										th:if="${listnhanvien.enabled}" th:text="'ON'"
+										class="label label-success">
+										</span> 
+										<span
+										th:unless="${listnhanvien.enabled}" th:text="'OFF'"
+										class="label label-danger">
+										</span>
 									</td>
-									<td><span class="badge bg-red">55%</span></td>
-								</tr>
-								<tr>
-									<td>2.</td>
-									<td>Clean database</td>
+									<td th:text="${listnhanvien.name_employee}"></td>
+									<td th:text="${listnhanvien.gender ? 'Nam' : 'Nữ'}"></td>
+									<td th:text="${listnhanvien.birthday}"></td>
+									<td th:text="${listnhanvien.address}"></td>
+									<td th:text="${listnhanvien.email}"></td>
+									<td th:text="${listnhanvien.phone}"></td>
+									<td th:text="${listnhanvien.hire_date}"></td>
+									<td th:text="${listnhanvien.position}"></td>
 									<td>
-										<div class="progress progress-xs">
-											<div class="progress-bar progress-bar-yellow"
-												style="width: 70%"></div>
-										</div>
+										<a th:href="@{/admin/edit-nv/{id}(id=${listnhanvien.id})}" class="btn btn-success">Edit</a>
+										<a th:href="@{/admin/delete-nv/{id}(id=${listnhanvien.id})}" onclick="return confirm('Bạn có chắc chắn xóa người này ?')" class="btn btn-danger">Delete</a>
 									</td>
-									<td><span class="badge bg-yellow">70%</span></td>
 								</tr>
-								<tr>
-									<td>3.</td>
-									<td>Cron job running</td>
-									<td>
-										<div class="progress progress-xs progress-striped active">
-											<div class="progress-bar progress-bar-primary"
-												style="width: 30%"></div>
-										</div>
-									</td>
-									<td><span class="badge bg-light-blue">30%</span></td>
-								</tr>
-								<tr>
-									<td>4.</td>
-									<td>Fix and squish bugs</td>
-									<td>
-										<div class="progress progress-xs progress-striped active">
-											<div class="progress-bar progress-bar-success"
-												style="width: 90%"></div>
-										</div>
-									</td>
-									<td><span class="badge bg-green">90%</span></td>
-								</tr>
+
 							</tbody>
 						</table>
 					</div>

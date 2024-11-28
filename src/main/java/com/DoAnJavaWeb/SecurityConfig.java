@@ -36,8 +36,8 @@ public class SecurityConfig {
 		http.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests((auth) -> auth
 				.requestMatchers("/*").permitAll()
-				.requestMatchers("/admin/**")
-				.hasAuthority("ADMIN")
+				.requestMatchers("/admin/**").permitAll()
+//				.hasAuthority("ADMIN")
 				.requestMatchers("/employee/**")
 				.hasAuthority("EMPLOYEE")
 				.anyRequest().authenticated())
@@ -45,9 +45,9 @@ public class SecurityConfig {
 				.usernameParameter("username")
 				.passwordParameter("password")
 				.successHandler(authenticationSuccessHandler()))// gọi hàm để kiểm tra role
-				.logout(logout->logout.logoutUrl("/admin-logout").logoutSuccessUrl("/login"))
+//				.logout(logout->logout.logoutUrl("/admin-logout").logoutSuccessUrl("/login"))
 				.logout(logout->logout.logoutUrl("/employee-logout").logoutSuccessUrl("/login"));
-		return http.build();
+		return http.build(); 
 	}
 	
 	@Bean

@@ -28,8 +28,8 @@ public class Users {
 	@Column(name ="enabled") // này là trạng thái tài khoản 
 	private Boolean enabled;
 	
-	@Column(name = "fullname")
-	private String fullname;
+	@Column(name = "name_employee")
+	private String name_employee;
 	
 	@Column(name = "gender")
 	private Boolean gender;
@@ -43,20 +43,40 @@ public class Users {
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "sdt")
-	private String sdt;
+	@Column(name = "phone")
+	private String phone;
 	
-	@Column(name = "hiredate")
-	private Date hiredate;
+	@Column(name = "hire_date")
+	private Date hire_date;
 	
 	@Column(name ="position")
 	private String position;
 	
 	@OneToMany(mappedBy = "user" , fetch = FetchType.EAGER)
 	private Set<UserRole> userRoles;
+
 	
 	public Users() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Users(Integer id, String username, String password, Boolean enabled, String name_employee, Boolean gender,
+			Date birthday, String address, String email, String phone, Date hire_date, String position,
+			Set<UserRole> userRoles) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+		this.name_employee = name_employee;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.address = address;
+		this.email = email;
+		this.phone = phone;
+		this.hire_date = hire_date;
+		this.position = position;
+		this.userRoles = userRoles;
 	}
 
 	public Integer getId() {
@@ -91,12 +111,12 @@ public class Users {
 		this.enabled = enabled;
 	}
 
-	public String getFullname() {
-		return fullname;
+	public String getName_employee() {
+		return name_employee;
 	}
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setName_employee(String name_employee) {
+		this.name_employee = name_employee;
 	}
 
 	public Boolean getGender() {
@@ -131,20 +151,20 @@ public class Users {
 		this.email = email;
 	}
 
-	public String getSdt() {
-		return sdt;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setSdt(String sdt) {
-		this.sdt = sdt;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public Date getHiredate() {
-		return hiredate;
+	public Date getHire_date() {
+		return hire_date;
 	}
 
-	public void setHiredate(Date hiredate) {
-		this.hiredate = hiredate;
+	public void setHire_date(Date hire_date) {
+		this.hire_date = hire_date;
 	}
 
 	public String getPosition() {
@@ -162,26 +182,6 @@ public class Users {
 	public void setUserRoles(Set<UserRole> userRoles) {
 		this.userRoles = userRoles;
 	}
-
-	public Users(Integer id, String username, String password, Boolean enabled, String fullname, Boolean gender,
-			Date birthday, String address, String email, String sdt, Date hiredate, String position,
-			Set<UserRole> userRoles) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.enabled = enabled;
-		this.fullname = fullname;
-		this.gender = gender;
-		this.birthday = birthday;
-		this.address = address;
-		this.email = email;
-		this.sdt = sdt;
-		this.hiredate = hiredate;
-		this.position = position;
-		this.userRoles = userRoles;
-	}
 	
 	
-
 }

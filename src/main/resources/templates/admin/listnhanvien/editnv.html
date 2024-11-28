@@ -18,7 +18,7 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Form thêm nhân viên<small>Thông Tin</small>
+					Form cập nhật nhân viên<small>Thông Tin</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -32,15 +32,16 @@
 				<div class="box">
 					<div class="box box-primary">
 						<div class="box-header with-border">
-							<h3 class="box-title">Thêm Thông Tin</h3>
+							<h3 class="box-title">Cập nhật Thông Tin</h3>
 						</div>
 						<!-- /.box-header -->
 						<!-- form start -->
-						<form role="form" method="post" th:action="@{/admin/add-nv}"
+						<form role="form" method="post" th:action="@{/admin/edit-nv}"
 							th:object="${dsnv}">
 							<div class="box-body">
 								<div class="row">
 									<div class="col-md-6">
+									
 										<div class="form-group">
 											<label>Họ Và Tên</label> <input type="text"
 												class="form-control" placeholder="Enter ..." required
@@ -81,22 +82,19 @@
 												id="hire_date" name="hire_date" class="form-control"
 												th:field="*{hire_date}">
 										</div>
-										<div class="form-group">
-											<label>Địa Chỉ</label> <input type="text"
-												class="form-control" placeholder="Enter ..."
-												th:field="*{address}">
+											<div class="form-group">
+											<label>Địa Chỉ</label> <input type="text" class="form-control"
+												placeholder="Enter ..." th:field="*{address}">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-										<label>Role User</label> <br>
-											<select id="role" name="role">
-												<option value="ADMIN">Admin</option>
-												<option value="EMPLOYEE">Employee</option>
-											</select>
+											<label>ID Nhân Viên</label> <input type="text"
+												class="form-control"
+												th:field="*{id}" readonly>
 										</div>
 										<div class="form-group">
-											<label>Vị Trí Công Việc</label> <input type="text" class="form-control"
+											<label>Vị Trí</label> <input type="text" class="form-control"
 												placeholder="Enter ..." th:field="*{position}">
 										</div>
 										<div class="form-group">
@@ -130,7 +128,7 @@
 								</div>
 							</div>
 							<div class="box-footer">
-								<button type="submit" class="btn btn-primary">Submit</button>
+								<button type="submit" class="btn btn-primary">Update</button>
 							</div>
 						</form>
 					</div>
