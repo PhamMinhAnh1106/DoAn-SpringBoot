@@ -2,6 +2,7 @@ package com.DoAnJavaWeb.controllers.admin;
 
 import java.util.List;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +25,6 @@ public class ListNhanVienControllers {
 	@Autowired
 	private UserService userService;
 
-
 	@GetMapping("/listnhanvien")
 	public String index(Model model) {
 		List<Users> list = this.userService.getAll();
@@ -42,13 +42,19 @@ public class ListNhanVienControllers {
 	}
 
 	@PostMapping("/add-nv")
-	public String save(@ModelAttribute("dsnv") Users users) {
-		if (this.userService.create(users))
-			
+	public String save(@ModelAttribute("dsnv") Users users, @RequestParam("role") String roleName) {
+		if (this.userService.create(users)) {
+			Role role = userService.findRoleByName(roleName);
+			if(role == null)
+			{
+				return "admin/listnhanvien/addnv"; //Bắt lỗi null role lần thử thứ n* -> thành công rồi
+			}
+			UserRole userRole = new UserRole(users, role);
+			this.userService.saveUserRole(userRole);
 			return "redirect:/admin/listnhanvien";
-		else
+		} else {
 			return "admin/listnhanvien/addnv";
-
+		}
 	}
 
 	@GetMapping("/edit-nv/{id}")
