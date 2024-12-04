@@ -37,7 +37,7 @@ public class ChamCongControllers {
 	}
 
 	@PostMapping("/add-chamcong")
-	public String save(@ModelAttribute("chamCong") ChamCong chamCong) {
+	public String save(@ModelAttribute("dscc") ChamCong chamCong) {
 		if (this.chamCongService.create(chamCong)) {
 			return "redirect:admin/listchamcong";
 		} else {
@@ -49,7 +49,7 @@ public class ChamCongControllers {
 	public String edit(@PathVariable("id") Integer id, Model model) {
 		ChamCong chamCong = chamCongService.findById(id);
 		if (chamCong != null) {
-			model.addAttribute("chamCong", chamCong);// Chấm công khác null thì lụm
+			model.addAttribute("dscc", chamCong);// Chấm công khác null thì lụm
 			return "admin/listchamcong/editcc";
 		} else {
 			return "redirect:admin/listchamcong";
@@ -57,7 +57,7 @@ public class ChamCongControllers {
 	}
 
 	@PostMapping("/edit-chamcong")
-	public String update(@ModelAttribute("chamCong") ChamCong chamCong) {
+	public String update(@ModelAttribute("dscc") ChamCong chamCong) {
 		if (this.chamCongService.update(chamCong)) {
 			return "redirect:admin/listchamcong";
 		} else {

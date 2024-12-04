@@ -63,28 +63,28 @@
 										</div>
 										<div class="form-group">
 											<label>Ngày Sinh</label> <input type="date" id="birthday"
-												name="birthday" class="form-control" th:field="*{birthday}">
+												name="birthday" class="form-control" th:field="*{birthday}" required>
 										</div>
 
 										<div class="form-group">
 											<label for="exampleInputEmail1">Email address</label> <input
 												type="email" class="form-control" id="exampleInputEmail1"
-												placeholder="Enter email" th:field="*{email}">
+												placeholder="Enter email" th:field="*{email}" required>
 										</div>
 										<div class="form-group">
 											<label>Số Điện Thoại</label> <input type="text"
 												class="form-control" placeholder="Enter ..."
-												th:field="*{phone}">
+												th:field="*{phone}" required>
 										</div>
 										<div class="form-group">
 											<label>Ngày Nhận Việc</label> <input type="date"
 												id="hire_date" name="hire_date" class="form-control"
-												th:field="*{hire_date}">
+												th:field="*{hire_date}" required>
 										</div>
 										<div class="form-group">
 											<label>Địa Chỉ</label> <input type="text"
 												class="form-control" placeholder="Enter ..."
-												th:field="*{address}">
+												th:field="*{address}" required>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -97,7 +97,7 @@
 										</div>
 										<div class="form-group">
 											<label>Vị Trí Công Việc</label> <input type="text" class="form-control"
-												placeholder="Enter ..." th:field="*{position}">
+												placeholder="Enter ..." th:field="*{position}" required>
 										</div>
 										<div class="form-group">
 											<label>UserName</label> <input type="text"
