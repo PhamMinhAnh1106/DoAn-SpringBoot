@@ -1,6 +1,8 @@
 package com.DoAnJavaWeb.models;
 
-import java.util.Date;
+
+
+import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +14,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
+enum LeaveStatus {
+	pending, approved, rejected
+}
 
 @Entity
 @Table(name = "nghiphep")
@@ -37,8 +45,8 @@ public class NghiPhep {
 	@Column(name = "reason")
 	private String reason;
 
-	@Column(name = "status")
 	@Enumerated(EnumType.STRING)
+	@Column(name = "status")
 	private LeaveStatus status;
 
 	public NghiPhep(Integer id_leave, Users employee, Date start_date, Date end_date, String leave_type, String reason,
@@ -113,8 +121,4 @@ public class NghiPhep {
 		this.status = status;
 	}
 
-}
-
-enum LeaveStatus {
-	pending, approved, rejected
 }

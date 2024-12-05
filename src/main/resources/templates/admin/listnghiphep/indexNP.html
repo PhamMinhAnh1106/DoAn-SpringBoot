@@ -19,9 +19,6 @@
 			<section class="content-header">
 				<h1>Danh Sách Thông Tin Nghỉ Phép</h1>
 				<br>
-				<div>
-					<a href="add-chamcong" class="btn btn-success"> Thêm Nghỉ Phép</a>
-				</div>
 				<ol class="breadcrumb">
 					<li><a href="/admin"><i class="fa fa-dashboard"></i>Home</a></li>
 				</ol>
@@ -51,14 +48,13 @@
 								<tr th:each="nghiPhep : ${listnp}">
                                     <td th:text="${nghiPhep.id_leave}"></td>
                                     <td th:text="${nghiPhep.employee.name_employee}"></td>
-                                    <td th:text="${nghiPhep.start_date}"></td>
+                                   <td th:text="${nghiPhep.start_date}"></td>
                                     <td th:text="${nghiPhep.end_date}"></td>
                                     <td th:text="${nghiPhep.leave_type}"></td>
                                     <td th:text="${nghiPhep.reason}"></td>
                                    <td th:text="${nghiPhep.status}" th:class="'status-' + ${nghiPhep.status}"></td>
                                     <td>
                                         <a th:href="@{/admin/edit-nghiphep/{id}(id=${nghiPhep.id_leave})}" class="btn btn-success">Edit</a>
-                                        <a th:href="@{/admin/delete-nghiphep/{id}(id=${nghiPhep.id_leave})}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
 							</tbody>

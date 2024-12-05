@@ -53,7 +53,7 @@ public class ListNhanVienControllers {
 				return "admin/listnhanvien/addnv"; // Bắt lỗi null role lần thử thứ n* -> thành công rồi
 			}
 
-			// hash pass
+			//Băm mật khẩu
 			String rawPass = users.getPassword();
 			String encodePassword = bCryptPasswordEncoder.encode(rawPass);
 			users.setPassword(encodePassword);
@@ -89,7 +89,7 @@ public class ListNhanVienControllers {
 				String encodePassword = bCryptPasswordEncoder.encode(rawPass);
 				users.setPassword(encodePassword);
 			}
-			this.userService.update(users); // Lưu cập nhật vào cơ sở dữ liệu
+			this.userService.update(users); 
 			return "redirect:/admin/listnhanvien";
 		}
 

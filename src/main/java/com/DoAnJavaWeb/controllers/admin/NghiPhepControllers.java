@@ -36,14 +36,15 @@ public class NghiPhepControllers {
 
 	@GetMapping("/edit-nghiphep/{id}")
 	public String edit(@PathVariable("id") Integer id, Model model) {
-		NghiPhep nghiPhep = nghiPhepService.findById(id);
-		if (nghiPhep != null) {
-			model.addAttribute("dsnp", nghiPhep);
-			return "admin/listnghiphep/editnp";
-		} else {
-			return "redirect:/admin/listnghiphep";
-		}
+	    NghiPhep nghiPhep = nghiPhepService.findById(id);
+	    if (nghiPhep != null) {
+	        model.addAttribute("dsnp", nghiPhep);
+	        return "admin/listnghiphep/editnp";
+	    } else {
+	        return "redirect:/admin/listnghiphep";
+	    }
 	}
+
 
 	@PostMapping("/edit-nghiphep")
 	public String update(@ModelAttribute("dsnp") NghiPhep nghiPhep) {
