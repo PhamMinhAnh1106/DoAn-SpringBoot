@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,9 @@ public class ListNhanVienControllers {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	@GetMapping("/listnhanvien")
 	public String index(Model model) {
 		List<Users> list = this.userService.getAll();
@@ -45,12 +49,18 @@ public class ListNhanVienControllers {
 	public String save(@ModelAttribute("dsnv") Users users, @RequestParam("role") String roleName) {
 		if (this.userService.create(users)) {
 			Role role = userService.findRoleByName(roleName);
-			if(role == null)
-			{
-				return "admin/listnhanvien/addnv"; //Bắt lỗi null role lần thử thứ n* -> thành công rồi
+			if (role == null) {
+				return "admin/listnhanvien/addnv"; // Bắt lỗi null role lần thử thứ n* -> thành công rồi
 			}
+
+			// hash pass
+			String rawPass = users.getPassword();
+			String encodePassword = bCryptPasswordEncoder.encode(rawPass);
+			users.setPassword(encodePassword);
+
 			UserRole userRole = new UserRole(users, role);
 			this.userService.saveUserRole(userRole);
+
 			return "redirect:/admin/listnhanvien";
 		} else {
 			return "admin/listnhanvien/addnv";
@@ -67,10 +77,23 @@ public class ListNhanVienControllers {
 
 	@PostMapping("/edit-nv")
 	public String update(@ModelAttribute("dsnv") Users users) {
-		if (this.userService.create(users))
+		Users existingUser = this.userService.findById(users.getId());
+		if (existingUser != null) {
+			// Nếu mật khẩu không thay đổi, giữ nguyên mật khẩu cũ
+			if (users.getPassword() == null || users.getPassword().isEmpty()
+					|| existingUser.getPassword().equals(users.getPassword())) {
+				users.setPassword(existingUser.getPassword());
+			} else {
+				// Nếu mật khẩu mới được nhập, băm mật khẩu mới
+				String rawPass = users.getPassword();
+				String encodePassword = bCryptPasswordEncoder.encode(rawPass);
+				users.setPassword(encodePassword);
+			}
+			this.userService.update(users); // Lưu cập nhật vào cơ sở dữ liệu
 			return "redirect:/admin/listnhanvien";
-		else
-			return "admin/listnhanvien/editnv";
+		}
+
+		return "admin/listnhanvien/editnv";
 	}
 
 	@GetMapping("/delete-nv/{id}")
