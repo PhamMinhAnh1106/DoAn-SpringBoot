@@ -30,8 +30,8 @@
 
 		<ul class="sidebar-menu" data-widget="tree">
 
-			<li><a th:href="@{/employee/listnhanvien}"> <i class="fa fa-th"></i>
-					<span>Quản lý Nhân Viên </span> <span class="pull-right-container">
+			<li><a th:href="@{/employee/ttcanhan}"> <i class="fa fa-th"></i>
+					<span>Thông Tin Cá Nhân </span> <span class="pull-right-container">
 						<small class="label pull-right bg-green">FE</small>
 				</span>
 			</a></li>
@@ -42,15 +42,11 @@
 				</span>
 			</a>
 				<ul class="treeview-menu">
-					<li><a href=""><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-					<li><a href=""><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+					<li><a th:href="@{/employee/chamcong}"><i class="fa fa-circle-o"></i> Chấm Công</a></li>
+					<li><a th:href="@{/employee/nghiphep}"><i class="fa fa-circle-o"></i> Nghỉ Phép</a></li>
 				</ul></li>
 
-			<li><a href=""> <i class="fa fa-th"></i> <span>Widgets</span>
-					<span class="pull-right-container"> <small
-						class="label pull-right bg-green">Hot</small>
-				</span>
-			</a></li>
+			
 
 		</ul>
 	</section>

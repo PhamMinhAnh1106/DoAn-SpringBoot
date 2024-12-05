@@ -60,5 +60,8 @@ public class ChamCongServiceImpl implements ChamCongService {
 		}
 		return false;
 	}
-
+	@Override
+	public List<ChamCong> getByEmployeeId(Integer employeeId) {
+		return chamCongRepository.findAllByEmployee_Id(employeeId);
+	}
 }

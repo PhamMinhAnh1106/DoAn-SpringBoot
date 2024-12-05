@@ -6,7 +6,7 @@ import com.DoAnJavaWeb.models.NghiPhep;
 
 public interface NghiPhepService {
 	List<NghiPhep> getAll();
-
+	List<NghiPhep> getByEmployeeId(Integer employeeId);
 	Boolean create(NghiPhep nghiPhep);
 
 	NghiPhep findById(Integer idLeave);

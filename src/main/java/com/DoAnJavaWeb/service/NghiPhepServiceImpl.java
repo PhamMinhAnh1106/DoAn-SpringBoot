@@ -63,6 +63,11 @@ public class NghiPhepServiceImpl implements NghiPhepService{
 		}
 		return false;
 	}
+	@Override
+	public List<NghiPhep> getByEmployeeId(Integer employeeId) {
+		// TODO Auto-generated method stub
+		return nghiPhepRepository.findAllByEmployee_Id(employeeId);
 	
+	}
 
 }

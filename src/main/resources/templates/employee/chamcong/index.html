@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <!-- head -->
-<head th:replace="admin/layout/head :: head"></head>
+<head th:replace="employee/layout/head :: head"></head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<!-- Site wrapper -->
 	<div class="wrapper">
 		<!-- header -->
-		<header th:replace="admin/layout/header :: header"> </header>
+		<header th:replace="employee/layout/header :: header"> </header>
 		<!-- =============================================== -->
 
 		<!-- Left side column. contains the sidebar -->
-		<div th:replace="admin/layout/sidebar :: sidebar"></div>
+		<div th:replace="employee/layout/sidebar :: sidebar"></div>
 		<!-- =============================================== -->
 
 		<!-- Content Wrapper. Contains page content -->
@@ -19,11 +19,9 @@
 			<section class="content-header">
 				<h1>Danh Sách Thông Tin Nhân Viên</h1>
 				<br>
-				<div>
-					<a href="add-chamcong" class="btn btn-success"> Thêm Chấm Công</a>
-				</div>
+				
 				<ol class="breadcrumb">
-					<li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="/employee"><i class="fa fa-dashboard"></i> Home</a></li>
 				</ol>
 			</section>
 
@@ -39,22 +37,19 @@
 						<table class="table table-bordered">
 							<tbody>
 								<tr>
-									<th style="width: 10px">ID Chấm Công</th>
 									<th>Nhân viên</th>
 									<th>Check-in</th>
 									<th>Check-out</th>
 									<th>Ngày làm việc</th>
-									<th>Enabled</th>
-									<th style="width: 40px">Tùy Chọn</th>
+									<th>Trạng thái</th>
 								</tr>
 
 								<tr th:each="chamCong : ${listcc}">
-									<td th:text="${chamCong.id}"></td>
 									<td th:text="${chamCong.employee.name_employee}"></td>
 									<td th:text="${chamCong.checkInTime}"></td>
 									<td th:text="${chamCong.checkOutTime}"></td>
 									<td th:text="${chamCong.workDate}"></td>
-									<td>
+										<td>
 										<span 
 										th:if="${chamCong.enabled}" th:text="'Đã chấm công'"
 										class="label label-success">
@@ -64,10 +59,7 @@
 										class="label label-danger">
 										</span>
 									</td>
-									<td><a
-										th:href="@{/admin/edit-chamcong/{id}(id=${chamCong.id})}"
-										class="btn btn-success">Edit</a> </td>
-								</tr>
+									
 
 							</tbody>
 						</table>
@@ -88,12 +80,12 @@
 			</section>
 		</div>
 
-		<div th:replace="admin/layout/footer :: footer"></div>
+		<div th:replace="employee/layout/footer :: footer"></div>
 	</div>
 	<!-- ./wrapper -->
 
 	<!-- jQuery 3 -->
-	<div th:replace="admin/layout/scripts :: scripts"></div>
+	<div th:replace="employee/layout/scripts :: scripts"></div>
 
 
 </body>
