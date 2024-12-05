@@ -17,10 +17,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
-enum LeaveStatus {
-	pending, approved, rejected
-}
-
 @Entity
 @Table(name = "nghiphep")
 public class NghiPhep {

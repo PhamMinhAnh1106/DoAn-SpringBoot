@@ -14,4 +14,5 @@ public interface UserService {
     Boolean delete(Integer id);
     Role findRoleByName(String roleName);
     void saveUserRole(UserRole userRole);
+	String getEmailById(Integer id);
 }

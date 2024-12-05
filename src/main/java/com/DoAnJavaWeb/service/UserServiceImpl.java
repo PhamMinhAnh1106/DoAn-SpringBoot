@@ -89,4 +89,10 @@ public class UserServiceImpl implements UserService {
 		}
 		return false;
 	}
+	
+	@Override
+	public String getEmailById(Integer id) {
+		Users user = userRepository.findById(id).orElse(null);
+		return user != null ? user.getEmail(): null;
+	}
 }
