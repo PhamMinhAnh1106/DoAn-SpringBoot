@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- head -->
+<head th:replace="employee/layout/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- header -->
+        <header th:replace="employee/layout/header :: header"> </header>
+        <!-- =============================================== -->
+        <!-- Left side column. contains the sidebar -->
+        <div th:replace="employee/layout/sidebar :: sidebar"></div>
+        <!-- =============================================== -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>Thêm Nghỉ Phép Mới</h1>
+                <ol class="breadcrumb">
+                    <li><a href="/employee"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="/employee/nghiphep">Nghỉ Phép</a></li>
+                    <li class="active">Thêm Nghỉ Phép</li>
+                </ol>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Điền Thông Tin Nghỉ Phép</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <form action="#" method="post" th:action="@{/employee/add-nghiphep}" th:object="${dsnp}">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="start_date">Ngày bắt đầu:</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date" th:field="*{start_date}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="end_date">Ngày kết thúc:</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date" th:field="*{end_date}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="leave_type">Loại nghỉ phép:</label>
+                                <select class="form-control" id="leave_type" name="leave_type" th:field="*{leave_type}" required>
+                                    <option value="Annual">Nghỉ phép năm</option>
+                                    <option value="Sick">Nghỉ ốm</option>
+                                    <option value="Other">Khác</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="reason">Lý do:</label>
+                                <textarea class="form-control" id="reason" name="reason" rows="3" th:field="*{reason}" placeholder="Nhập lý do nghỉ phép..." required></textarea>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <a href="/employee/nghiphep" class="btn btn-default">Hủy</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box -->
+            </section>
+        </div>
+        <div th:replace="employee/layout/footer :: footer"></div>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    <div th:replace="employee/layout/scripts :: scripts"></div>
+</body>
+</html>

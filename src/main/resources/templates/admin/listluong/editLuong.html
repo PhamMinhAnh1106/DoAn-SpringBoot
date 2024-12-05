@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- header -->
+        <header th:replace="admin/layout/header :: header"></header>
+
+        <!-- Left side column. contains the sidebar -->
+        <div th:replace="admin/layout/sidebar :: sidebar"></div>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>Chỉnh Sửa Lương Nhân Viên</h1>
+                <ol class="breadcrumb">
+                    <li><a href="/admin"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+                    <li><a href="/admin/listluong">Danh Sách Lương</a></li>
+                    <li class="active">Chỉnh Sửa Lương</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Chỉnh Sửa Thông Tin Lương</h3>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <!-- Form start -->
+                    <form role="form" method="post" th:action="@{/admin/edit-luong/{id}(id=${luong.idSalary})}" th:object="${luong}">
+
+                        <div class="box-body">
+                            <div class="row">
+                                <!-- Cột trái -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>ID Nhân Viên</label>
+                                        <input type="text" class="form-control" 
+                                               th:field="*{employee.id}" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tên Nhân Viên</label>
+                                        <input type="text" class="form-control" 
+                                               th:field="*{employee.name_employee}" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lương Cơ Bản</label>
+                                        <input type="number" class="form-control" placeholder="Nhập Lương Cơ Bản" 
+                                               th:field="*{basicSalary}" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Thưởng</label>
+                                        <input type="number" class="form-control" placeholder="Nhập Thưởng" 
+                                               th:field="*{bonus}"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Khấu Trừ</label>
+                                        <input type="number" class="form-control" placeholder="Nhập Khấu Trừ" 
+                                               th:field="*{deduction}"  />
+                                    </div>
+                                </div>
+
+                                <!-- Cột phải -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Lương Tổng</label>
+                                        <input type="number" class="form-control" placeholder="Nhập Lương Tổng" 
+                                               th:field="*{totalSalary}" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ngày Thanh Toán</label>
+                                        <input type="date" class="form-control" placeholder="Nhập Ngày Thanh Toán" 
+                                               th:field="*{payDate}" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                            <a href="/admin/listluong" class="btn btn-default">Hủy</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="admin/layout/footer :: footer"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- Scripts -->
+<div th:replace="admin/layout/scripts :: scripts"></div>
+</body>
+</html>

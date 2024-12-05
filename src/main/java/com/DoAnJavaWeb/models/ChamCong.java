@@ -1,6 +1,10 @@
 package com.DoAnJavaWeb.models;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,88 +18,86 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "chamcong")
 public class ChamCong {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_attendance")
-	private Integer id;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_employee", referencedColumnName = "id")
-	private Users employee;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_attendance")
+    private Integer id;
 
-	@Column(name = "check_in_time")
-	private LocalDateTime checkInTime;
+    @ManyToOne
+    @JoinColumn(name = "id_employee", referencedColumnName = "id")
+    private Users employee;
 
-	@Column(name = "check_out_time")
-	private LocalDateTime checkOutTime;
+    @Column(name = "check_in_time")
+    private LocalDateTime checkInTime;
 
-	@Column(name = "work_date")
-	private LocalDateTime workDate;
+    @Column(name = "check_out_time")
+    private LocalDateTime checkOutTime;
 
-	@Column(name = "enabled")
-	private Boolean enabled;
+    @Column(name = "work_date")
+    private Date workDate;
 
-	public ChamCong(Integer id, Users employee, LocalDateTime checkInTime, LocalDateTime checkOutTime,
-			LocalDateTime workDate, Boolean enabled) {
-		super();
-		this.id = id;
-		this.employee = employee;
-		this.checkInTime = checkInTime;
-		this.checkOutTime = checkOutTime;
-		this.workDate = workDate;
-		this.enabled = enabled;
-	}
+    @Column(name = "enabled")
+    private Boolean enabled;
 
-	public ChamCong() {
-		super();
-	}
+    // Constructors, getters, and setters
 
-	public Integer getId() {
-		return id;
-	}
+    public ChamCong() {}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public ChamCong(Integer id, Users employee, LocalDateTime checkInTime, LocalDateTime checkOutTime, 
+                    Date workDate, Boolean enabled) {
+        this.id = id;
+        this.employee = employee;
+        this.checkInTime = checkInTime;
+        this.checkOutTime = checkOutTime;
+        this.workDate = workDate;
+        this.enabled = enabled;
+    }
 
-	public Users getEmployee() {
-		return employee;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setEmployee(Users employee) {
-		this.employee = employee;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public LocalDateTime getCheckInTime() {
-		return checkInTime;
-	}
+    public Users getEmployee() {
+        return employee;
+    }
 
-	public void setCheckInTime(LocalDateTime checkInTime) {
-		this.checkInTime = checkInTime;
-	}
+    public void setEmployee(Users employee) {
+        this.employee = employee;
+    }
 
-	public LocalDateTime getCheckOutTime() {
-		return checkOutTime;
-	}
+    public LocalDateTime getCheckInTime() {
+        return checkInTime;
+    }
 
-	public void setCheckOutTime(LocalDateTime checkOutTime) {
-		this.checkOutTime = checkOutTime;
-	}
+    public void setCheckInTime(LocalDateTime checkInTime) {
+        this.checkInTime = checkInTime;
+    }
 
-	public LocalDateTime getWorkDate() {
-		return workDate;
-	}
+    public LocalDateTime getCheckOutTime() {
+        return checkOutTime;
+    }
 
-	public void setWorkDate(LocalDateTime workDate) {
-		this.workDate = workDate;
-	}
+    public void setCheckOutTime(LocalDateTime checkOutTime) {
+        this.checkOutTime = checkOutTime;
+    }
 
-	public Boolean getEnabled() {
-		return enabled;
-	}
+    public Date getWorkDate() {
+        return workDate;
+    }
 
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setWorkDate(Date workDate) {
+        this.workDate = workDate;
+    }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 }

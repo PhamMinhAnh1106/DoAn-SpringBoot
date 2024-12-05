@@ -1,13 +1,11 @@
 package com.DoAnJavaWeb.repository;
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.DoAnJavaWeb.models.ChamCong;
-
+import com.DoAnJavaWeb.models.NghiPhep;
 @Repository
-public interface ChamCongRepository extends JpaRepository<ChamCong, Integer>{
-	List<ChamCong> findAllByEmployee_Id(Integer employeeId);
+public interface NghiPhepRepository extends JpaRepository<NghiPhep, Integer>{
+
+	List<NghiPhep> findAllByEmployee_Id(Integer employeeId);
 }

@@ -18,56 +18,52 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 @Controller
 @RequestMapping("/admin")
 public class ChamCongControllers {
-	@Autowired
-	private ChamCongService chamCongService;
 
-	@GetMapping("listchamcong")
-	public String index(Model model) {
-		List<ChamCong> listcc = this.chamCongService.getAll();
-		model.addAttribute("listcc", listcc);
-		return "admin/listchamcong/indexLCC";
-	}
+    @Autowired
+    private ChamCongService chamCongService;
 
-	@GetMapping("add-chamcong")
-	public String add(Model model) {
-		ChamCong chamcong = new ChamCong();
-		chamcong.setEnabled(true);
-		model.addAttribute("dscc", chamcong);
-		return "admin/listchamcong/addcc";
-	}
+    @GetMapping("listchamcong")
+    public String index(Model model) {
+        List<ChamCong> listcc = chamCongService.getAll();
+        model.addAttribute("listcc", listcc);
+        return "admin/listchamcong/indexLCC";
+    }
 
-	@PostMapping("/add-chamcong")
-	public String save(@ModelAttribute("chamCong") ChamCong chamCong) {
-		if (this.chamCongService.create(chamCong)) {
-			return "redirect:admin/listchamcong";
-		} else {
-			return "admin/listchamcong/addcc";
-		}
-	}
+    @GetMapping("add-chamcong")
+    public String add(Model model) {
+        ChamCong chamcong = new ChamCong();
+        chamcong.setEnabled(true);
+        model.addAttribute("dscc", chamcong);
+        return "admin/listchamcong/addLcc";
+    }
 
-	@GetMapping("/edit-chamcong/{id}")
-	public String edit(@PathVariable("id") Integer id, Model model) {
-		ChamCong chamCong = chamCongService.findById(id);
-		if (chamCong != null) {
-			model.addAttribute("chamCong", chamCong);// Chấm công khác null thì lụm
-			return "admin/listchamcong/editcc";
-		} else {
-			return "redirect:admin/listchamcong";
-		}
-	}
+    @PostMapping("add-chamcong")
+    public String save(@ModelAttribute("dscc") ChamCong chamCong) {
+        if (chamCongService.create(chamCong)) {
+            return "redirect:/admin/listchamcong";
+        } else {
+            return "admin/listchamcong/addLcc";
+        }
+    }
 
-	@PostMapping("/edit-chamcong")
-	public String update(@ModelAttribute("chamCong") ChamCong chamCong) {
-		if (this.chamCongService.update(chamCong)) {
-			return "redirect:admin/listchamcong";
-		} else {
-			return "admin/listchamcong/editcc";
-		}
-	}
+    @GetMapping("edit-chamcong/{id}")
+    public String edit(@PathVariable("id") Integer id, Model model) {
+        ChamCong chamCong = chamCongService.findById(id);
+        if (chamCong != null) {
+            model.addAttribute("chamCong", chamCong);
+            return "admin/listchamcong/editLcc";
+        } else {
+            return "redirect:/admin/listchamcong";
+        }
+    }
 
-	@GetMapping("/delete-chamcong/{id}")
-	public String delete(@PathVariable("id") Integer id) {
-		this.chamCongService.delete(id);
-		return "redirect:admin/listchamcong";
-	}
+    @PostMapping("edit-chamcong/{id}")
+    public String update(@PathVariable("id") Integer id, @ModelAttribute("chamCong") ChamCong chamCong) {
+        chamCong.setId(id); // Cập nhật ID cho chamCong
+        if (chamCongService.update(chamCong)) {
+            return "redirect:/admin/listchamcong";
+        } else {
+            return "admin/listchamcong/editLcc"; // Nếu có lỗi, quay lại trang chỉnh sửa
+        }
+    }
 }

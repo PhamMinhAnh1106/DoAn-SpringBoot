@@ -8,67 +8,55 @@
 		<!-- header -->
 		<header th:replace="admin/layout/header :: header"> </header>
 		<!-- =============================================== -->
-
 		<!-- Left side column. contains the sidebar -->
 		<div th:replace="admin/layout/sidebar :: sidebar"></div>
 		<!-- =============================================== -->
-
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>Danh Sách Thông Tin Nhân Viên</h1>
+				<h1>Danh Sách Thông Tin Nghỉ Phép</h1>
 				<br>
 				<div>
-					<a href="add-chamcong" class="btn btn-success"> Thêm Chấm Công</a>
+					<a href="add-chamcong" class="btn btn-success"> Thêm Nghỉ Phép</a>
 				</div>
 				<ol class="breadcrumb">
-					<li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="/admin"><i class="fa fa-dashboard"></i>Home</a></li>
 				</ol>
 			</section>
-
 			<!-- Main content -->
 			<section class="content">
-
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">Danh Sách Chấm Công</h3>
+						<h3 class="box-title">Danh Sách Nghỉ Phép Của Nhân Viên</h3>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
 						<table class="table table-bordered">
 							<tbody>
 								<tr>
-									<th style="width: 10px">ID Chấm Công</th>
+									<th>ID</th>
 									<th>Nhân viên</th>
-									<th>Check-in</th>
-									<th>Check-out</th>
-									<th>Ngày làm việc</th>
-									<th>Enabled</th>
-									<th style="width: 40px">Tùy Chọn</th>
+									<th>Ngày bắt đầu</th>
+									<th>Ngày kết thúc</th>
+									<th>Loại nghỉ phép</th>
+									<th>Lý do</th>
+									<th>Trạng thái</th>
+									<th>Actions</th>
 								</tr>
-
-								<tr th:each="chamCong : ${listcc}">
-									<td th:text="${chamCong.id}"></td>
-									<td th:text="${chamCong.employee.name_employee}"></td>
-									<td th:text="${chamCong.checkInTime}"></td>
-									<td th:text="${chamCong.checkOutTime}"></td>
-									<td th:text="${chamCong.workDate}"></td>
-									<td>
-										<span 
-										th:if="${chamCong.enabled}" th:text="'Đã chấm công'"
-										class="label label-success">
-										</span> 
-										<span
-										th:unless="${chamCong.enabled}" th:text="'Chưa chấm công'"
-										class="label label-danger">
-										</span>
-									</td>
-									<td><a
-										th:href="@{/admin/edit-chamcong/{id}(id=${chamCong.id})}"
-										class="btn btn-success">Edit</a> </td>
-								</tr>
-
+								<tr th:each="nghiPhep : ${listnp}">
+                                    <td th:text="${nghiPhep.id_leave}"></td>
+                                    <td th:text="${nghiPhep.employee.name_employee}"></td>
+                                    <td th:text="${nghiPhep.start_date}"></td>
+                                    <td th:text="${nghiPhep.end_date}"></td>
+                                    <td th:text="${nghiPhep.leave_type}"></td>
+                                    <td th:text="${nghiPhep.reason}"></td>
+                                   <td th:text="${nghiPhep.status}" th:class="'status-' + ${nghiPhep.status}"></td>
+                                    <td>
+                                        <a th:href="@{/admin/edit-nghiphep/{id}(id=${nghiPhep.id_leave})}" class="btn btn-success">Edit</a>
+                                        <a th:href="@{/admin/delete-nghiphep/{id}(id=${nghiPhep.id_leave})}" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
 							</tbody>
 						</table>
 					</div>
@@ -84,17 +72,12 @@
 					</div>
 				</div>
 				<!-- /.box -->
-
 			</section>
 		</div>
-
 		<div th:replace="admin/layout/footer :: footer"></div>
 	</div>
 	<!-- ./wrapper -->
-
 	<!-- jQuery 3 -->
 	<div th:replace="admin/layout/scripts :: scripts"></div>
-
-
 </body>
 </html>
