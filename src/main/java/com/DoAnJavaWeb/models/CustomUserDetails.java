@@ -37,7 +37,8 @@ public class CustomUserDetails implements UserDetails{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return user.getUsername();
+//		return user.getUsername(); //này là lấy tên account là username
+		return user.getName_employee();
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package com.DoAnJavaWeb.models;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -30,13 +31,13 @@ public class ChamCong {
 	private LocalDateTime checkOutTime;
 
 	@Column(name = "work_date")
-	private LocalDateTime workDate;
+	private Date workDate;
 
 	@Column(name = "enabled")
 	private Boolean enabled;
 
 	public ChamCong(Integer id, Users employee, LocalDateTime checkInTime, LocalDateTime checkOutTime,
-			LocalDateTime workDate, Boolean enabled) {
+			Date workDate, Boolean enabled) {
 		super();
 		this.id = id;
 		this.employee = employee;
@@ -82,11 +83,11 @@ public class ChamCong {
 		this.checkOutTime = checkOutTime;
 	}
 
-	public LocalDateTime getWorkDate() {
+	public Date getWorkDate() {
 		return workDate;
 	}
 
-	public void setWorkDate(LocalDateTime workDate) {
+	public void setWorkDate(Date workDate) {
 		this.workDate = workDate;
 	}
 

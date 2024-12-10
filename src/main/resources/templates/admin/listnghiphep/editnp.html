@@ -39,7 +39,7 @@
 							<div class="box-body">
 								<div class="row">
 									<div class="col-md-6">
-								<div class="form-group">
+										<div class="form-group">
 											<label>Mã phép</label> <input type="text"
 												class="form-control" placeholder="Nhập tên nhân viên"
 												th:field="*{id_leave}" readonly>
@@ -49,22 +49,29 @@
 												class="form-control" placeholder="Nhập tên nhân viên"
 												th:field="*{employee.id}" readonly>
 										</div>
-											<div class="form-group">
-											<label>Ngày bắt đầu </label> <input type="date" id="start_date"
-												name="start_date" class="form-control" th:field="*{start_date}" readonly>
+										<div class="form-group">
+											<label>Ngày bắt đầu </label> <input type="date"
+												id="start_date" name="start_date" class="form-control"
+												th:field="*{start_date}" readonly>
 										</div>
 										<div class="form-group">
 											<label>Ngày kết thúc</label> <input type="date"
 												class="form-control" th:field="*{end_date}" readonly>
 										</div>
-										
+
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label>Loại nghỉ phép</label> <input type="text"
-												class="form-control" placeholder="Nhập loại nghỉ phép"
+											<label for="leave_type">Loại nghỉ phép:</label> <select
+												class="form-control" id="leave_type" name="leave_type"
 												th:field="*{leave_type}" required>
+												<option value="AL-Phép năm">AL-Phép năm</option>
+												<option value="PL-Phép cá nhân">PL-Phép cá nhân</option>
+												<option value="SL-Phép ốm">SL-Phép ốm</option>
+												<option value="Khác">Khác</option>
+											</select>
 										</div>
+
 										<div class="form-group">
 											<label>Lý do</label> <input type="text" class="form-control"
 												placeholder="Nhập lý do" th:field="*{reason}" required>
