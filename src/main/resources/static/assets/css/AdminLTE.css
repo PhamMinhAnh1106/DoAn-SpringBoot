@@ -1065,7 +1065,7 @@ a:focus {
   border-top-left-radius: 0;
   padding: 1px 0 0 0;
   border-top-width: 0;
-  width: 280px;
+  /* width: 280px; */
 }
 .navbar-nav > .user-menu > .dropdown-menu,
 .navbar-nav > .user-menu > .dropdown-menu > .user-body {
@@ -1076,6 +1076,7 @@ a:focus {
   height: 175px;
   padding: 10px;
   text-align: center;
+
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
   z-index: 5;
