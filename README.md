@@ -1,4 +1,4 @@
-# 🚀 ĐỒ ÁN: QUẢN LÝ NHÂN SỰ - Dùng SpringBoot
+# 🚀 ĐỒ ÁN: QUẢN LÝ NHÂN SỰ - SpringBoot
 - Thành viên : 2 người ( Phạm Minh Anh - Leader, Nguyễn Văn Huy - Member)
 - Đây là đồ án nhóm Back-End tạo ra một hệ thống quản lý nhân sự được phát triển bằng **Spring Boot**. Dự án hỗ trợ quản lý nhân viên, phòng ban, lương thưởng và chấm công một cách hiệu quả.
   
