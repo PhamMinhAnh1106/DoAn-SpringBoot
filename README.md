@@ -18,12 +18,13 @@
 - ✅ Quản lý nhân viên (thêm, sửa, xóa, tìm kiếm)
 - ✅ Quản lý phòng ban và phân quyền
 - ✅ Quản lý bảng lương, chấm công
+- ✅ Hệ thống gửi mail xác nhận phép nghỉ được duyệt
 - ✅ Hệ thống đăng nhập, phân quyền (Admin, Nhân viên, HR)
 - ✅ API RESTful để tích hợp với các hệ thống khác
 
 ## 🏗 Công nghệ sử dụng
 - Backend: **Spring Boot, Spring Security, Spring Data JPA**
-- Frontend: **Thymeleaf / Bootrap**
+- Frontend: **Thymeleaf / Bootraps**
 - Database: **MySQL**
 
 
