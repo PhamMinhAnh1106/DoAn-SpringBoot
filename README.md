@@ -11,7 +11,7 @@
 - ✅ API RESTful để tích hợp với các hệ thống khác
 
 ## 🏗 Công nghệ sử dụng
-- Backend: **Spring Boot (Spring Security, Spring Data JPA, Sping Mail,...)**
+- Backend: **Spring Boot (Spring Security, Spring Data JPA, Spring Mail,...)**
 - Frontend: **Thymeleaf / Bootraps**
 - Database: **MySQL**
   
